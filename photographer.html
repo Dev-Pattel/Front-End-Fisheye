@@ -1,36 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="logo de Fisheye"/></a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" aria-label="Ouvrir le formulaire de contact du photographe" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" alt="Bouton de fermeture de la modale" aria-label="Fermer le formulaire de contact" onclick="closeModal()" />
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="first-name">Prénom</label>
+						<input id="first-name" type="text" name="first-name" />
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <div>
+						<label for="last-name">Nom</label>
+						<input id="last-name" type="text" name="last-name" />
+					</div>
+          <div>
+						<label for="email">Email</label>
+						<input id="email" type="text" name="email" />
+					</div>
+          <div>
+						<label for="votre-message">Votre message</label>
+						<input id="votre-message" type="text" name="votre-message" />
+					</div>
+          <button class="contact_button" aria-label="Envoyer les informations du formulaire de contact">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <section class="gallery">
+      <div class ="filter">
+      <h2 class="filter-title">Trier par</h2>
+      <select id="sortOptions" aria-label="Trier les médias">
+        <option value="popularity">Popularité</option>
+        <option value="date">Date</option>
+        <option value="title">Titre</option>
+    </select>
+  </div>
+      <div class="media_container"></div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="">
+        <div class="lightbox-controls">
+          <span class="prev" onclick="changeImage(-1)"><i class="fa-solid fa-chevron-left"></i></span>
+          <span class="next" onclick="changeImage(1)"><i class="fa-solid fa-chevron-right"></i></span>
+        </div>
+      </div>
+    </section>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
