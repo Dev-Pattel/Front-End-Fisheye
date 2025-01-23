@@ -19,34 +19,46 @@
         <button class="contact_button" aria-label="Ouvrir le formulaire de contact du photographe" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="Bouton de fermeture de la modale" aria-label="Fermer le formulaire de contact" onclick="closeModal()" />
+    <div id="contact_modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="contact-title">
+      <div class="modal_content">
+        <header>
+          <h2 id="contact-title">Contactez-moi</h2>
+          <p id="photographer-name" aria-label="Nom du photographe"></p>
+          <img
+            src="assets/icons/close.svg"
+            alt="Bouton de fermeture de la modale"
+            aria-label="Fermer le formulaire de contact"
+            tabindex="0"
+            onclick="closeModal()"
+          />
         </header>
-				<form>
-					<div>
-						<label for="first-name">Prénom</label>
-						<input id="first-name" type="text" name="first-name" />
-					</div>
+        <form>
           <div>
-						<label for="last-name">Nom</label>
-						<input id="last-name" type="text" name="last-name" />
-					</div>
+            <label for="first-name">Prénom</label>
+            <input id="first-name" type="text" name="first-name" required />
+          </div>
           <div>
-						<label for="email">Email</label>
-						<input id="email" type="text" name="email" />
-					</div>
+            <label for="last-name">Nom</label>
+            <input id="last-name" type="text" name="last-name" required />
+          </div>
           <div>
-						<label for="votre-message">Votre message</label>
-						<input id="votre-message" type="text" name="votre-message" />
-					</div>
-          <button class="contact_button" aria-label="Envoyer les informations du formulaire de contact">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <section class="gallery">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required />
+          </div>
+          <div>
+            <label for="votre-message">Votre message</label>
+            <textarea id="votre-message" name="votre-message" rows="8" required></textarea>
+          </div>
+          <button
+            class="contact_button"
+            type="submit"
+            aria-label="Envoyer les informations du formulaire de contact"
+          >
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>    <section class="gallery">
       <div class ="filter">
       <h2 class="filter-title">Trier par</h2>
       <select id="sortOptions" aria-label="Trier les médias">
@@ -65,6 +77,16 @@
         </div>
       </div>
     </section>
+    <div class="likes-price-box">
+      <div class="total-likes">
+          <span id="total-likes">0</span>
+          <i class="fa-solid fa-heart"></i>
+      </div>
+      <div class="daily-price">
+          <span id="daily-price">0</span> €/jour
+      </div>
+  </div>
+  
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>

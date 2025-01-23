@@ -78,17 +78,22 @@ body {
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal header h2, h3{
     font-size: 64px;
     font-weight: normal;
     text-align: center;
 }
-
+#title-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 form {
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    font-size: large;
 }
 
 form label {
@@ -109,6 +114,13 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 30px;
+}
+
+form textarea {
+    width: 100%;
+    resize: none;
+    font-size: 30px;
 }
 
 .filter {
@@ -230,5 +242,35 @@ form input {
     font-size: 24px;
     color: rgba(144, 28, 28, 1);
 }
-  
+
+/* Encadré likes/prix */
+.likes-price-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 15px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.likes-price-box .total-likes {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #000;
+}
+
+.likes-price-box .daily-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
 
