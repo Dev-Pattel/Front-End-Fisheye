@@ -22,15 +22,19 @@
     <div id="contact_modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="contact-title">
       <div class="modal_content">
         <header>
-          <h2 id="contact-title">Contactez-moi</h2>
-          <p id="photographer-name" aria-label="Nom du photographe"></p>
-          <img
-            src="assets/icons/close.svg"
-            alt="Bouton de fermeture de la modale"
-            aria-label="Fermer le formulaire de contact"
-            tabindex="0"
-            onclick="closeModal()"
-          />
+          <div class="modal_title">
+            <div class="modal_title_close">
+              <h2 id="contact-title">Contactez-moi</h2>
+              <img
+                src="assets/icons/close.svg"
+                alt="Bouton de fermeture de la modale"
+                aria-label="Fermer le formulaire de contact"
+                tabindex="0"
+                onclick="closeModal()"
+              />
+            </div>
+            <p id="photographer-name" aria-label="Nom du photographe"></p>
+          </div>
         </header>
         <form>
           <div>
@@ -47,12 +51,13 @@
           </div>
           <div>
             <label for="votre-message">Votre message</label>
-            <textarea id="votre-message" name="votre-message" rows="8" required></textarea>
+            <textarea id="votre-message" name="votre-message" rows="5" required></textarea>
           </div>
           <button
             class="contact_button"
             type="submit"
             aria-label="Envoyer les informations du formulaire de contact"
+            onclick="SubmitContactForm()"
           >
             Envoyer
           </button>
