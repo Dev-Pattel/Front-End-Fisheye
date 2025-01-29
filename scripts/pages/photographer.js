@@ -4,7 +4,7 @@ async function getPhotographerData() {
     const data = await response.json();
     const { photographers, media } = data;
 
-    // Extraction de l'ID du photographe
+    // Extraction de l'ID du photographe depuis l'URL
     const urlParams = new URLSearchParams(window.location.search);
     const photographerId = parseInt(urlParams.get('id'));
 
@@ -22,12 +22,16 @@ async function displayPhotographerData() {
     // Affichage des informations du photographe
     const contactButton = document.querySelector('.contact_button');
     const infoBlock = document.createElement("div");
+
     const h2 = document.createElement('h2');
     h2.textContent = photographer.name;
+
     const h3 = document.createElement('h3');
     h3.textContent = `${photographer.city}, ${photographer.country}`;
+
     const h4 = document.createElement('h4');
     h4.textContent = photographer.tagline;
+
     const picture = `assets/photographers/${photographer.portrait}`;
     const img = document.createElement('img');
     img.setAttribute("src", picture);
@@ -40,11 +44,23 @@ async function displayPhotographerData() {
     infoBlock.appendChild(h4);
 
     // Tri initial par popularité
-    const sortedMedia = sortMedia(photographerMedia, 'popularity');
+    let sortedMedia = sortMedia(photographerMedia, 'popularity');
     displayPhotographerMedia(sortedMedia);
 
-    // Mettre à jour la liste des images pour la lightbox après l'affichage des médias
+    // Sélectionner toutes les images pour la lightbox
     images = Array.from(document.querySelectorAll('.media_container img'));
+
+    // Écouteur sur le menu déroulant pour trier les médias
+    const sortSelect = document.getElementById('sortOptions');
+    sortSelect.addEventListener('change', (event) => {
+        const selectedValue = event.target.value;
+        // On trie en fonction du critère choisi
+        sortedMedia = sortMedia(photographerMedia, selectedValue);
+        // On réaffiche les médias
+        displayPhotographerMedia(sortedMedia);
+        // On met à jour la liste des images pour la lightbox
+        images = Array.from(document.querySelectorAll('.media_container img'));
+    });
 
     // Calculer les likes totaux et mettre à jour l'encadré
     const totalLikes = calculateTotalLikes(photographerMedia);
@@ -106,18 +122,14 @@ function displayPhotographerMedia(mediaList) {
     });
 }
 
-
 // Gestion des likes
-// Fonction pour gérer le clic sur un bouton de like
 function handleLikeClick(likeElement, media, photographerMedia) {
     // Vérifier si le média n'a pas encore été liké
     if (!likeElement.classList.contains('liked')) {
         // Ajouter un like au média
         media.likes += 1;
-
         // Mettre à jour l'affichage du nombre de likes pour le média
         likeElement.textContent = media.likes;
-
         // Ajouter la classe 'liked' pour indiquer que ce média est déjà liké
         likeElement.classList.add('liked');
 
