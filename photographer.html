@@ -51,13 +51,14 @@
           </div>
           <div>
             <label for="votre-message">Votre message</label>
-            <textarea id="votre-message" name="votre-message" rows="5" required></textarea>
+            <textarea id="votre-message" name="votre-message" rows="5" required onkeydown="if (event.key === 'Enter') {SubmitContactForm()}"></textarea>
           </div>
           <button
             class="contact_button"
             type="submit"
             aria-label="Envoyer les informations du formulaire de contact"
             onclick="SubmitContactForm()"
+            
           >
             Envoyer
           </button>
