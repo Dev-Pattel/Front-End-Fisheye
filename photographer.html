@@ -67,27 +67,27 @@
     </div> 
     <section class="gallery">
       <div class ="filter">
-      <h2 class="filter-title">Trier par</h2>
-      <select id="sortOptions" aria-label="Trier les médias">
-        <option value="popularity">Popularité</option>
-        <option value="date">Date</option>
-        <option value="title">Titre</option>
+        <label for="sortOptions" class="filter-title">Trier par</label>
+        <select id="sortOptions">
+        <option value="popularity" aria-label="Trier par popularité">Popularité</option>
+        <option value="date" aria-label="Trier par date">Date</option>
+        <option value="title" aria-label="Trier par titre">Titre</option>
     </select>
   </div>
       <div class="media_container"></div>
       <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></span>
+        <span class="close" onclick="closeLightbox()"><em class="fa-solid fa-xmark"aria-label="Fermer"></em></span>
         <img class="lightbox-content" id="lightbox-img" src="" alt="">
         <div class="lightbox-controls">
-          <span class="prev" onclick="changeImage(-1)"><i class="fa-solid fa-chevron-left"></i></span>
-          <span class="next" onclick="changeImage(1)"><i class="fa-solid fa-chevron-right"></i></span>
+          <span class="prev" onclick="changeImage(-1)"><em class="fa-solid fa-chevron-left" aria-label="Naviguer à gauche"></em></span>
+          <span class="next" onclick="changeImage(1)"><em class="fa-solid fa-chevron-right" aria-label="Naviguer à droite"></em></span>
         </div>
       </div>
     </section>
     <div class="likes-price-box">
       <div class="total-likes">
           <span id="total-likes">0</span>
-          <i class="fa-solid fa-heart"></i>
+          <em class="fa-solid fa-heart"></em>
       </div>
       <div class="daily-price">
           <span id="daily-price">0</span> €/jour
